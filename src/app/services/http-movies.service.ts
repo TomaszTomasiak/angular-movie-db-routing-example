@@ -38,4 +38,8 @@ export class HttpMoviesService {
     return this.http.patch(this.url + '/' + movie.id, movie)
      .pipe(tap(console.log));
    }
+
+   deleteMovie(id: string): Observable<{}>{
+     return this.http.delete<{}>(this.url + '/' + id).pipe(tap(console.log));
+   }
 }

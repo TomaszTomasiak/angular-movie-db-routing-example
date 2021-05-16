@@ -54,5 +54,7 @@ export class HttpTestComponent {
     this.http.patchMovie(movie).subscribe();
   }
 
-  delete() {}
+  delete() {
+    this.http.deleteMovie('54').subscribe();
+  }
 }
