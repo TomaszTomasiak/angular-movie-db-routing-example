@@ -8,10 +8,12 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./http-test.component.css'],
 })
 export class HttpTestComponent {
+  errorMessage: string;
   constructor(private http: HttpMoviesService) {}
 
   get() {
-    this.http.getMovies().subscribe();
+    this.http.getMovies().subscribe({error: (err: string) => (this.errorMessage = err)
+    });
   }
 
   post() {
@@ -26,7 +28,8 @@ export class HttpTestComponent {
       imdbRating: '10.0',
     };
 
-    this.http.postMovie(movie).subscribe();
+    this.http.postMovie(movie).subscribe({error: (err: string) => (this.errorMessage = err)
+    });
   }
 
   put() {
@@ -42,7 +45,8 @@ export class HttpTestComponent {
     imdbRating: '10.0',
   };
 
-  this.http.putMovie(movie).subscribe();
+  this.http.putMovie(movie).subscribe({error: (err: string) => (this.errorMessage = err)
+  });
 }
 
   patch() {
@@ -51,15 +55,20 @@ export class HttpTestComponent {
            plot: 'Geralt szuka Ciri.',
     };
   
-    this.http.patchMovie(movie).subscribe();
+    this.http.patchMovie(movie).subscribe({error: (err: string) => (this.errorMessage = err)
+    });
   }
 
   delete() {
-    this.http.deleteMovie('54').subscribe();
+    this.http.deleteMovie('54').subscribe({error: (err: string) => (this.errorMessage = err)
+    });
   }
 
   error(){
-    this.http.makeError().subscribe();
+    this.http
+    .makeError()
+    .subscribe({error: (err: string) => (this.errorMessage = err)
+    });
   }
 
 }
