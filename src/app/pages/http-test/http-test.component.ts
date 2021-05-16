@@ -29,7 +29,8 @@ export class HttpTestComponent {
     this.http.postMovie(movie).subscribe();
   }
 
-  put() {const movie: Movie = {
+  put() {
+    const movie: Movie = {
     id: '54',
     title: 'Wiedźmin 2',
     year: '2001',
@@ -41,9 +42,17 @@ export class HttpTestComponent {
     imdbRating: '10.0',
   };
 
-  this.http.putMovie(movie).subscribe();}
+  this.http.putMovie(movie).subscribe();
+}
 
-  patch() {}
+  patch() {
+    const movie: Partial<Movie> = {
+      id: '54',
+           plot: 'Geralt szuka Ciri.',
+    };
+  
+    this.http.patchMovie(movie).subscribe();
+  }
 
   delete() {}
 }
