@@ -71,4 +71,8 @@ export class HttpTestComponent {
     });
   }
 
+  headers() {
+    this.http.headers().subscribe();
+  }
+
 }
